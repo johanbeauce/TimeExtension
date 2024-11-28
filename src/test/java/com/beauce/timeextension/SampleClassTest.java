@@ -3,6 +3,7 @@ package com.beauce.timeextension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.time.LocalDate;
 
@@ -12,6 +13,9 @@ class SampleClassTest {
 
     SampleClass sampleClass;
     LocalDate givenDate;
+
+    @RegisterExtension
+    TimeExtension timeExtension = new TimeExtension(LocalDate.parse("2023-04-10"));
 
     @BeforeEach
     void setUp() {
@@ -23,7 +27,7 @@ class SampleClassTest {
 
         @BeforeEach
         void setUp() {
-            givenDate = LocalDate.parse("2025-01-01");
+            givenDate = LocalDate.parse("2023-04-11");
         }
 
         @Test
@@ -37,7 +41,7 @@ class SampleClassTest {
 
         @BeforeEach
         void setUp() {
-            givenDate = LocalDate.now();
+            givenDate = LocalDate.parse("2023-04-10");
         }
 
         @Test
@@ -51,7 +55,7 @@ class SampleClassTest {
 
         @BeforeEach
         void setUp() {
-            givenDate = LocalDate.parse("2020-01-01");
+            givenDate = LocalDate.parse("2023-04-09");
         }
 
         @Test
