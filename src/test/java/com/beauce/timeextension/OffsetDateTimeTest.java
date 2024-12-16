@@ -5,17 +5,17 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SampleClassTest {
+public class OffsetDateTimeTest {
 
     SampleClass sampleClass;
-    LocalDate givenDate;
+    OffsetDateTime givenDateTime;
 
     @RegisterExtension
-    TimeExtension timeExtension = new TimeExtension(LocalDate.parse("2023-04-10"));
+    TimeExtension timeExtension = new TimeExtension(OffsetDateTime.parse("2023-04-10T00:00:00Z"));
 
     @BeforeEach
     void setUp() {
@@ -23,44 +23,44 @@ class SampleClassTest {
     }
 
     @Nested
-    class Given_a_date_in_the_future {
+    class Given_a_date_time_in_the_future {
 
         @BeforeEach
         void setUp() {
-            givenDate = LocalDate.parse("2023-04-11");
+            givenDateTime = OffsetDateTime.parse("2023-04-11T00:00:00Z");
         }
 
         @Test
         void is_in_the_future_returns_true() {
-            assertThat(sampleClass.isInTheFuture(givenDate)).isTrue();
+            assertThat(sampleClass.isInTheFuture(givenDateTime)).isTrue();
         }
     }
 
     @Nested
-    class Given_a_date_which_is_today {
+    class Given_a_date_time_which_is_today {
 
         @BeforeEach
         void setUp() {
-            givenDate = LocalDate.parse("2023-04-10");
+            givenDateTime = OffsetDateTime.parse("2023-04-10T00:00:00Z");
         }
 
         @Test
         void is_in_the_future_returns_true() {
-            assertThat(sampleClass.isInTheFuture(givenDate)).isFalse();
+            assertThat(sampleClass.isInTheFuture(givenDateTime)).isFalse();
         }
     }
 
     @Nested
-    class Given_a_date_in_the_past {
+    class Given_a_date_time_in_the_past {
 
         @BeforeEach
         void setUp() {
-            givenDate = LocalDate.parse("2023-04-09");
+            givenDateTime = OffsetDateTime.parse("2023-04-09T00:00:00Z");
         }
 
         @Test
         void is_in_the_future_returns_false() {
-            assertThat(sampleClass.isInTheFuture(givenDate)).isFalse();
+            assertThat(sampleClass.isInTheFuture(givenDateTime)).isFalse();
         }
     }
 }
