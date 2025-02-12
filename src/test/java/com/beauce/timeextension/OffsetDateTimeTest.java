@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.OffsetDateTime;
 
@@ -37,29 +39,12 @@ public class OffsetDateTimeTest {
     }
 
     @Nested
-    class Given_a_date_time_which_is_today {
+    class Given_a_date_time_in_the_past_or_today {
 
-        @BeforeEach
-        void setUp() {
-            givenDateTime = OffsetDateTime.parse("2023-04-10T00:00:00Z");
-        }
-
-        @Test
-        void is_in_the_future_returns_true() {
-            assertThat(sampleClass.isInTheFuture(givenDateTime)).isFalse();
-        }
-    }
-
-    @Nested
-    class Given_a_date_time_in_the_past {
-
-        @BeforeEach
-        void setUp() {
-            givenDateTime = OffsetDateTime.parse("2023-04-09T00:00:00Z");
-        }
-
-        @Test
-        void is_in_the_future_returns_false() {
+        @ParameterizedTest
+        @ValueSource(strings = {"2023-04-09T00:00:00Z", "2023-04-10T00:00:00Z"})
+        void is_in_the_future_returns_false(String date) {
+            givenDateTime = OffsetDateTime.parse(date);
             assertThat(sampleClass.isInTheFuture(givenDateTime)).isFalse();
         }
     }
