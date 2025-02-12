@@ -1,6 +1,6 @@
 
 # How do you test your code when it depends on time?
-I propose you a little exercise that you can during a brown bag lunch or a dev 2 dev session. 
+I propose you a little exercise that you can do during a brown bag lunch or a dev 2 dev session. 
 
 Try to cover the following code with unit tests.
 
@@ -15,9 +15,9 @@ public class SampleClass {
     }
 }
 ```
-It's interesting how you can test the `isInTheFuture` method. 
+It's interesting to see how developer test a method depending on actual time in their tests. 
 
 # Proposed solution
 A solution is available in this repository.
 
-LocalDateTest and OffsetDateTimeTest are the test classes that you can use to test the SampleClass using a custom extension with JUnit 5.
+LocalDateTest and OffsetDateTimeTest are the test classes that you can use to test the SampleClass using a custom extension of JUnit 5.
