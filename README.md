@@ -18,6 +18,9 @@ public class SampleClass {
 It's interesting to see how developer test a method depending on actual time in their tests. 
 
 # Proposed solution
-A solution is available in this repository.
+A solution is available in this repository:
+* [LocalDateTest.java](src/test/java/com/beauce/timeextension/LocalDateTest.java)
+* [OffsetDateTimeTest.java](src/test/java/com/beauce/timeextension/OffsetDateTimeTest.java)
 
-LocalDateTest and OffsetDateTimeTest are the test classes that you can use to test the SampleClass using a custom extension of JUnit 5.
+LocalDateTest and OffsetDateTimeTest are the test classes that you can use to test the SampleClass using a custom extension of JUnit 5:
+[TimeExtension.java](src/test/java/com/beauce/timeextension/TimeExtension.java)
